@@ -26,10 +26,14 @@ st.dataframe(df)
 
 # Using a selectbox to allow users to filter data by city
 # Students learn how to use widgets in Streamlit for interactivity
+city = st.selectbox("Select a city", df["City"].unique())
 
 # Filtering the DataFrame based on user selection
+#filtered_df = df[df["City"] == city]
 
 # Display the filtered results
+st.write(f"People in {city}:")
+st.dataframe(df[df["City"] == city])
 
 
 # ================================
@@ -40,7 +44,8 @@ st.dataframe(df)
 # This teaches students how to work with external data in Streamlit
 # # Ensure the "data" folder exists with the CSV file
 # Display the imported dataset
-
+df2 = pd.read_csv("data/sample_data.csv")
+st.dataframe(df2)
 # Using a selectbox to allow users to filter data by city
 # Students learn how to use widgets in Streamlit for interactivity
 
