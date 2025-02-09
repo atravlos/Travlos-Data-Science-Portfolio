@@ -1,3 +1,7 @@
-# This is a basic streamlit app which reads data and has interactive widgets in Streamlit.
+# Welcome to my Basic Streamlit App!
 
-## Data includes:
+This app includes interactive features that allow you to filter through a penguin dataset.
+
+## Data
+
+Inside the data folder, you will find a penguins.csv file that contains various penguins species, bill lengths, bill depths, and other features.
