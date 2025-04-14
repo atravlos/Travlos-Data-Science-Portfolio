@@ -16,7 +16,7 @@ __Supervised Machine Learning__  uses labeled data to train a model that makes a
 ## App Instructions
 
 1. In terminal, navigate to working directory and run "streamlit run ML_Streamlit_App.py". The app will open in the local browser.
-2. Upload .csv file or choose from sample dataset.
+2. Upload .csv file or choose from sample datasets.
 3. After reviewing the data and preprocessing steps, choose to run classification model.
 4. Choose Supervised Machine Learning Model (K-Nearest Neighbors or Decision Tree).
 5. Select Target Column and Feature Column(s).
