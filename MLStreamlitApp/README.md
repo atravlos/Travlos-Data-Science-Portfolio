@@ -12,3 +12,16 @@ __Supervised Machine Learning__  uses labeled data to train a model that makes a
 
 - **K-Nearest Neighbors** finds the "k" nearest data points to a new data point and makes predictions based on the class labels.
 - **Decision Tree** predicts the value of a target variable by making a series of decisions based on the input features. Each decision made is a node and each possible outcome is a branch.
+
+## App Instructions
+
+1. In terminal, navigate to working directory and run "streamlit run ML_Streamlit_App.py". The app will open in the local browser.
+2. Upload .csv file or choose from sample dataset.
+3. After reviewing the data and preprocessing steps, choose to run classification model.
+4. Choose Supervised Machine Learning Model (K-Nearest Neighbors or Decision Tree).
+5. Select Target Column and Feature Column(s).
+6. Set Test Set Size.
+7. Choose whether to use unscaled/scaled data.
+8. Choose Hyperparameters.
+9. Run GridSearchCV Optimization.
+10. The Confusion Matrix and Classification Report will generate. Feel free to explore with different parameters/datasets to see how they affect evaluation criteria!
