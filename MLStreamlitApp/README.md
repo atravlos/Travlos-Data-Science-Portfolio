@@ -1,4 +1,4 @@
-# ML Streamlit App - Interactive Supervised Machine Learning Classifier
+# Interactive Supervised Machine Learning Classifier
 
 #### By Anthony Travlos
 
@@ -45,3 +45,6 @@ __Supervised Machine Learning__  uses labeled data to train a model that makes a
 - [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
 - [Confusion Matrix](https://www.datacamp.com/tutorial/what-is-a-confusion-matrix-in-machine-learning)
 - [Classification Report](https://www.nb-data.com/p/breaking-down-the-classification)
+
+
+*“A baby learns to crawl, walk and then run.  We are in the crawling stage when it comes to applying machine learning.” ~Dave Waters*
