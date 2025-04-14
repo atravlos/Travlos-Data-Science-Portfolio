@@ -25,3 +25,23 @@ __Supervised Machine Learning__  uses labeled data to train a model that makes a
 8. Choose Hyperparameters.
 9. Run GridSearchCV Optimization.
 10. The Confusion Matrix and Classification Report will generate. Feel free to explore with different parameters/datasets to see how they affect evaluation criteria!
+
+## Libraries
+
+- Streamlit
+- Numpy
+- Pandas
+- Seaborn
+- Matplotlib
+- Graphviz
+- sklearn
+
+## Additional Resources
+
+- [One-Hot Encoding](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
+- [K-Nearest Neighbors](https://www.ibm.com/think/topics/knn#:~:text=The%20k%2Dnearest%20neighbors%20(KNN)%20algorithm%20is%20a%20non,used%20in%20machine%20learning%20today.)
+- [Decision Trees](https://www.ibm.com/think/topics/decision-trees)
+- [Scaling Data](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/)
+- [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+- [Confusion Matrix](https://www.datacamp.com/tutorial/what-is-a-confusion-matrix-in-machine-learning)
+- [Classification Report](https://www.nb-data.com/p/breaking-down-the-classification)
