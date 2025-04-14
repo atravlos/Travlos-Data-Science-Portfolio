@@ -12,9 +12,10 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.preprocessing import StandardScaler
 from sklearn import tree
 
-# -----------------------------------------------
+# ------------------------
 # Application Information
-# -----------------------------------------------
+# ------------------------
+
 st.title("Interactive Supervised Machine Learning Classifier")
 st.markdown("""
 <a id="app-info"></a>
@@ -27,20 +28,22 @@ unsafe_allow_html=True)
 
 st.markdown("""
 ### Instructions:
-1. Upload .csv file or choose from sample dataset.
-2. After reviewing the data and preprocessing steps, choose to run classification model.
-3. Choose Supervised Machine Learning Model (K-Nearest Neighbors or Decision Tree).
-4. Select Target Column and Feature Column(s).
-5. Set Test Set Size.
-6. Choose whether to use unscaled/scaled data.
-7. Choose Hyperparameters.
-8. Run GridSearchCV Optimization.
-9. The Confusion Matrix and Classification Report will generate. Feel free to explore with different parameters/datasets to see how they affect evaluation criteria!
+1. In terminal, navigate to working directory and run "streamlit run ML_Streamlit_App.py". The app will open in the local browser.
+2. Upload .csv file or choose from sample dataset.
+3. After reviewing the data and preprocessing steps, choose to run classification model.
+4. Choose Supervised Machine Learning Model (K-Nearest Neighbors or Decision Tree).
+5. Select Target Column and Feature Column(s).
+6. Set Test Set Size.
+7. Choose whether to use unscaled/scaled data.
+8. Choose Hyperparameters.
+9. Run GridSearchCV Optimization.
+10. The Confusion Matrix and Classification Report will generate. Feel free to explore with different parameters/datasets to see how they affect evaluation criteria!
 """)
 
-# Main content with anchor tags for navigation
+# ------------------------
+# Sidebar - Table of Contents
+# ------------------------
 
-# Sidebar: Table of Contents using markdown
 st.sidebar.markdown("""
 # Table of Contents
 - [About this Application](#app-info)
@@ -50,9 +53,9 @@ st.sidebar.markdown("""
 - [Model Evaluation](#evaluation)
 """, unsafe_allow_html=True)
 
-# -----------------------------------------------
-# Data Upload / Demo Dataset Option
-# -----------------------------------------------
+# ------------------------
+# .csv Upload / Choose From Sample Datasets
+# ------------------------
 st.markdown("""### Choose Your Dataset <a id="data-upload"></a>""", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 if uploaded_file is not None:
@@ -77,19 +80,26 @@ else:
 st.caption("Titanic: Lists the attributes of members on the Titanic and if they survived the shipwreck or not.")
 st.caption("Iris: Lists sepal and petal lengths/widths of various Iris flowers.")
 st.caption("Wine: Lists attributes of different types of wine.")
+
 # -----------------------------------------------
-# Preprocessing: Drop Missing Values and One-Hot Encode
+# Preprocessing (Handle NAs and Encode Data to Numeric)
 # -----------------------------------------------
+
 st.subheader("Raw Dataset Preview")
 st.dataframe(df.head())
 
 st.markdown("***NOTE: This application removes missing values by default!***")
 df.dropna(inplace=True)
+# I chose to simply drop NAs. Another option could include giving the user an option to impute.
+
 st.markdown("***NOTE: This application converts categorical data to numerical data using one-hot encoding!***")
 st.markdown("*What is one-hot encoding?*")
 st.caption("- One-hot encoding is a method that replaces categorical data with numerical binary data. We do this because machine learning models process numerical data types.")
 
-# One-hot encode all categorical columns (object or category types)
+# For more information on one-hot encoding: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+
+# The next 3 blocks of code ensure that all columns are converted to numeric data. The boolean block was added because I ran into trouble with converting boolean data to integer.
+
 categorical_columns = df.select_dtypes(include=["object", "category"]).columns.tolist()
 if categorical_columns:
    st.write("One-hot encoding the following categorical columns:", categorical_columns)
@@ -97,12 +107,9 @@ if categorical_columns:
 else:
    st.caption("No categorical columns detected for one-hot encoding.")
 
-# Convert columns to numeric where possible
 for col in df.columns:
-    # Attempt to convert each column to numeric, ignoring errors
     df[col] = pd.to_numeric(df[col], errors='ignore')
 
-# Convert boolean columns to integers
 bool_cols = df.select_dtypes(include=['bool']).columns
 if not bool_cols.empty:
     st.write("Converting the following boolean columns to integers:", bool_cols.tolist())
@@ -110,10 +117,9 @@ if not bool_cols.empty:
 else:
     st.caption("Data successfully converted to numerical data type!")
 
-
-# -----------------------------------------------
+# ----------------------------
 # Display Dataset Information
-# -----------------------------------------------
+# ----------------------------
 
 st.markdown("""### Preprocessing Dataset Overview <a id="preprocessing"></a>""", unsafe_allow_html=True)
 st.caption("This is the data format the machine learning model will use!")
@@ -126,22 +132,28 @@ with st.expander("Click to view full Dataset Information"):
     st.write("**Dataset Shape:**", df.shape)
     st.write("**Column Names:**", df.columns.tolist())
 
-# -----------------------------------------------
-# Classification Section
-# -----------------------------------------------
+# ----------------------------------
+# Supervised Machine Learning Model
+# ----------------------------------
+
 if st.checkbox("Run Supervised Machine Learning Model"):
     st.markdown("""### Supervised Machine Learning Setup <a id="setup"></a>""", unsafe_allow_html=True)
     
     # Let the user choose the classifier
     classifier_choice = st.selectbox("Select Machine Learning Model", ["K-Nearest Neighbors", "Decision Tree"])
     st.caption("K-Nearest Neighbors: Finds the 'k' nearest data points to classify each data point.")
+
+    # For more information on K-Nearest Neighbors: https://www.ibm.com/think/topics/knn#:~:text=The%20k%2Dnearest%20neighbors%20(KNN)%20algorithm%20is%20a%20non,used%20in%20machine%20learning%20today.
+
     st.caption("Decision Tree: Predicts the target by making a series of sequential decisions.")
+
+    # For more information on Decision Tree: https://www.ibm.com/think/topics/decision-trees
     
-    # Let the user choose the target column
+    # Choose the target column
     columns = df.columns.tolist()
     target = st.selectbox("Select target column", columns)
     
-    # For feature selection, show only numeric columns (excluding the target)
+    # Feature Selection
     numeric_features = df.select_dtypes(include=["number"]).columns.tolist()
     if target in numeric_features:
         numeric_features.remove(target)
@@ -155,20 +167,23 @@ if st.checkbox("Run Supervised Machine Learning Model"):
     X = df[features]
     y = df[target]
     
-    # Split the data into training and testing sets
+    # Split data into training and testing
     test_size = st.slider("Test set size (%)", min_value=10, max_value=50, value=20, step=5)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size/100.0, random_state=42)
     
-    # Option for scaling features
+    # Option To Scale Features
     data_type = st.radio("Data Type", options=["Unscaled", "Scaled"])
     st.caption("Unscaled data is the numerical data as it exists in the dataset.")
     st.caption("Scaled data transforms the data into a range (Ex: 0 to 1, standard deviations, etc.).")
+
     if data_type == "Scaled":
         scaler = StandardScaler()
         X_train = scaler.fit_transform(X_train)
         X_test = scaler.transform(X_test)
+
+    # For more information on scaling data: https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/
         
-    # Train the selected classifier based on user's choice
+    # Train Machine Learning Model
     if classifier_choice == "K-Nearest Neighbors":
         k = st.slider("Select number of neighbors (k, odd values only)", min_value=1, max_value=21, step=2, value=5)
         model = KNeighborsClassifier(n_neighbors=k)
@@ -181,7 +196,7 @@ if st.checkbox("Run Supervised Machine Learning Model"):
                                    min_samples_leaf=min_samples_leaf,
                                    random_state=42)
 
-    # Option to perform GridSearchCV for hyperparameter tuning
+    # Option to Perform GridSearchCV for Hyperparameter Tuning
     if st.checkbox("Run GridSearchCV Optimization (This may take a minute...)"):
         st.caption("GridSearchCV splits the data into folds and iteratively trains on these folds (through cross-validation) to determine the best parameters.")
         st.subheader("Grid Search Hyperparameter Tuning")
@@ -205,18 +220,19 @@ if st.checkbox("Run Supervised Machine Learning Model"):
         apply_best = st.checkbox("Apply best parameters from GridSearchCV")
         if apply_best:
             model = grid.best_estimator_
-            
+    
+    # For mroe information on GridSearchCV: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     
     accuracy_val = accuracy_score(y_test, y_pred)
     st.write(f"**Accuracy: {accuracy_val:.2f}**")
     
-    # After evaluating the model, add the following for Decision Tree visualization:
+    # Decision Tree Visualization:
 
     if classifier_choice == "Decision Tree":
         st.subheader("Decision Tree Visualization")
-        # Generate DOT data
         dot_data = tree.export_graphviz(
             model,
             out_file=None,
@@ -226,8 +242,11 @@ if st.checkbox("Run Supervised Machine Learning Model"):
             rounded=True,
             special_characters=True
         )
-        # Display the DOT data using Streamlit's graphviz_chart
         st.graphviz_chart(dot_data)
+
+# ----------------------------------
+# Evaluate Machine Learning Model
+# ----------------------------------
 
     # Confusion Matrix
     cm = confusion_matrix(y_test, y_pred)
@@ -241,6 +260,8 @@ if st.checkbox("Run Supervised Machine Learning Model"):
     ax.set_ylabel("Actual")
     st.pyplot(fig)
 
+    # For more information on Confusion Matrix: https://www.datacamp.com/tutorial/what-is-a-confusion-matrix-in-machine-learning
+
     # Classification Report (displayed as a cleaner table)
     st.subheader("Classification Report")
     st.caption("**Precision:** Percentage of positive classifications that are actually positive. This is crucial when it is especially important for positive predictions to be accirate.")
@@ -250,3 +271,5 @@ if st.checkbox("Run Supervised Machine Learning Model"):
     report_dict = classification_report(y_test, y_pred, output_dict=True)
     report_df = pd.DataFrame(report_dict).transpose()
     st.dataframe(report_df)
+
+    # For more information on Classification Report: https://www.nb-data.com/p/breaking-down-the-classification
