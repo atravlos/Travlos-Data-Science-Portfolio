@@ -32,3 +32,19 @@ This project incorporates data wrangling and cleaning to transform a dataset to 
 >>- Method Chaining
 >>- Data Visualization
 
+[**Interactive Supervised Machine Learning Classifier**](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/ee65e26c19b47c4db50047d43602be39b2af9a71/MLStreamlitApp)
+
+<img src="https://github.com/user-attachments/assets/d0e49b15-d778-4dd3-9515-49de7c1b43f5" width="200" height="150">
+
+This project is an interactive supervised machine learning classifier that allows the user to upload a dataset (or choose from the samples provided), walk through data preprocessing steps, and perform and evaluate either a K-Nearest Neighbor or Decision Tree Model. Users are invited to explore with the machine learning model setup by choosing different target/feature columns and tuning hyperparameters (k, max depth, minimum sample splits, etc.) to see how these factors effect model performance. Finally, users will be able to evaluate their model with cross-validation (GridSearchCV), confusion matrices, and classification reports.
+
+>**Skills and Libraries**
+>>- Supervised Machine Learning (K-Nearest Neighbors and Decision Trees)
+>>- One-Hot Encoding
+>>- Machine Learning Model Evaluation (GridSearchCV, Confusion Matrix, Precision, Accuracy, Recall, F1 Score)
+>>- Hyperparameter Tuning
+>>- Pandas
+>>- Matplotlib
+>>- Sklearn
+
+
