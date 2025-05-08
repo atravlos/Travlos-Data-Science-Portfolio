@@ -42,7 +42,7 @@ Further Reading on the Importance of Tidy Data: [Tidy Data by Hadley Wickham](ht
     <img width="1098" alt="Screenshot 2025-03-17 at 2 42 12 PM" src="https://github.com/user-attachments/assets/9cdf3d59-0e5d-40ff-a342-5f94ab9bcc87" />
 4. From there, run the rest of the Python cells sequentially to appropriately clean the data to TidyData Principles and then visualize the data.
 
-## 📊 Sample
+## 📈 Sample
 
 Bar plot showing medal distribution by gender:
 
