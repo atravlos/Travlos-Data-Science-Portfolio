@@ -36,6 +36,12 @@ __Supervised Machine Learning__  uses labeled data to train a model that makes a
 - Graphviz
 - sklearn
 
+## 📈 Sample
+
+<img width="500" alt="Screenshot 2025-05-08 at 5 40 42 PM" src="https://github.com/user-attachments/assets/4e184ac5-d456-476c-a850-f4884ba951cc" />
+
+
+
 ## 🗄️ Additional Resources
 
 - [One-Hot Encoding](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
