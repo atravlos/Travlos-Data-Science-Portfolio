@@ -31,6 +31,10 @@ __Unsupervised Machine Learning__  uses unlabeled data to train a model that ide
 - Matplotlib
 - sklearn
 
+## 📈 Sample
+
+<img width="500" alt="Screenshot 2025-05-08 at 5 41 44 PM" src="https://github.com/user-attachments/assets/74703d25-a82f-424a-8233-5ab0054dc726" />
+
 ## 🗄️ Additional Resources
 
 - [K-Means](https://www.geeksforgeeks.org/k-means-clustering-introduction/)
