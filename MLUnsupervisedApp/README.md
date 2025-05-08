@@ -2,7 +2,7 @@
 
 #### By Anthony Travlos
 
-## Project Description
+## 🗒️ Project Description
 
 This project is an interactive unsupervised machine learning clustering app that allows the user to upload a dataset (or choose from the samples provided), walk through data preprocessing steps, and perform and evaluate either a K-Means or Hierarchical Clustering model. Users are invited to explore with the machine learning model parameters by choosing different k values to see how these factors effect model performance. Finally, users will be able to evaluate their model by comparing clusters to the true labels, calculating an accuracy score, and evaluating for the optimal number of clusters (k).
 
