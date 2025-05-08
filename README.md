@@ -1,24 +1,24 @@
-## Data Science Portfolio ##
+# Introduction to Data Science Portfolio #
 
-This portfolio is a summary of my work in my Introduction to Data Science Course.
+#### By Anthony Travlos
+
+This portfolio is a summary of my work in my Introduction to Data Science Course taken in the Spring Semester 2025 at the University of Notre Dame.
 
  ## Projects ##
 
 Check out my work throughout the semester in the [Data-Science-Portfolio Repository](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/main?tab=readme-ov-file#data-science-portfolio) or at the following links:
 
-[**Basic Streamlit App**](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/main/basic-streamlit-app#welcome-to-my-basic-streamlit-app)
+## 🐧 [Basic Streamlit App](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/main/basic-streamlit-app#welcome-to-my-basic-streamlit-app)
 
 <img src="https://github.com/user-attachments/assets/c44f11f5-deda-4afd-9943-1b5fe753de6d" alt="Image" width="150" height=100>
 
-
-
-This project uses streamlit to build a dashboard that allows users to filter and observe data from the "Palmer Penguins" dataset.
+This project is my first ever streamlit app. This app uses streamlit to build a dashboard that allows users to filter and observe data from the "Palmer Penguins" dataset.
 
 >**Skills and Libraries**
 >>- Streamlit
 >>- Pandas
 
-[**Exploring Tidy Data Principles through 2008 Summer Olympic Medalists**](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/main/TidyData-Project#exploring-the-2008-summer-olympics-medalists)
+## 🥇 [Exploring Tidy Data Principles through 2008 Summer Olympic Medalists](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/main/TidyData-Project#exploring-the-2008-summer-olympics-medalists)
 
 <img src="https://github.com/user-attachments/assets/5e0680fe-e410-4b42-87cb-4e849620f472" width="100" height="100">
 
@@ -32,7 +32,7 @@ This project incorporates data wrangling and cleaning to transform a dataset to 
 >>- Method Chaining
 >>- Data Visualization
 
-[**Interactive Supervised Machine Learning Classifier**](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/ee65e26c19b47c4db50047d43602be39b2af9a71/MLStreamlitApp)
+## 📈 [Interactive Supervised Machine Learning Classifier](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/ee65e26c19b47c4db50047d43602be39b2af9a71/MLStreamlitApp)
 
 <img src="https://github.com/user-attachments/assets/d0e49b15-d778-4dd3-9515-49de7c1b43f5" width="200" height="150">
 
@@ -46,5 +46,19 @@ This project is an interactive supervised machine learning classifier that allow
 >>- Pandas
 >>- Matplotlib
 >>- Sklearn
+
+## 🔍 [Interactive Unsupervised Machine Learning Clustering App](https://github.com/atravlos/Travlos-Data-Science-Portfolio/tree/main/MLUnsupervisedApp)
+
+<img src="https://github.com/user-attachments/assets/af704455-27dd-4e7c-82d5-aa9b52b2634f" width="300" height="100">
+
+This project is an interactive unsupervised machine learning clustering app that allows the user to upload a dataset (or choose from the samples provided), walk through data preprocessing steps, and perform and evaluate either a K-Means or Hierarchical Clustering model. Users are invited to explore with the machine learning model parameters by choosing different k values to see how these factors effect model performance. Finally, users will be able to evaluate their model by comparing clusters to the true labels, calculating an accuracy score, and evaluating for the optimal number of clusters (k).
+
+>**Skills and Libraries**
+>>- Streamlit
+>>- Numpy
+>>- Pandas
+>>- Seaborn
+>>- Matplotlib
+>>- sklearn
 
 
