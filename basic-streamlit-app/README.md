@@ -15,6 +15,10 @@ Inside the data folder, you will find a penguins.csv file that contains various 
 - Streamlit
 - Pandas
 
+## 📈 Sample
+<img width="500" alt="Screenshot 2025-05-08 at 5 43 51 PM" src="https://github.com/user-attachments/assets/ad59b95e-26e7-48f9-8b3b-af8f6189f8db" />
+
+
 ## 🗄️ Additional Resources
 
 - [Streamlit](https://streamlit.io/)
